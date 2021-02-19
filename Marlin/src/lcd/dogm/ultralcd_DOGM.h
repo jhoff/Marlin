@@ -87,7 +87,7 @@
   // MaKrPanel, Mini Viki, Viki 2.0, AZSMZ 12864 ST7565 controller
 
   #define SMART_RAMPS MB(RAMPS_SMART_EFB, RAMPS_SMART_EEB, RAMPS_SMART_EFF, RAMPS_SMART_EEF, RAMPS_SMART_SF)
-  #define U8G_CLASS U8GLIB_64128N_2X_HAL                        // 4 stripes (HW-SPI)
+  #define U8G_CLASS U8GLIB_NHD_C12864
   #if SMART_RAMPS || DOGLCD_SCK != SCK_PIN || DOGLCD_MOSI != MOSI_PIN
     #define FORCE_SOFT_SPI                                      // SW-SPI
   #endif

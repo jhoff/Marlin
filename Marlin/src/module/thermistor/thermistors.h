@@ -189,6 +189,9 @@ typedef struct { int16_t value, celsius; } temp_entry_t;
 #if ANY_THERMISTOR_IS(999) // User-defined table 2
   #include "thermistor_999.h"
 #endif
+#if ANY_THERMISTOR_IS(9999) // Custom Bed thermistor readings
+  #include "thermistor_9999.h"
+#endif
 #if ANY_THERMISTOR_IS(1000) // Custom
   const temp_entry_t temptable_1000[] PROGMEM = { { 0, 0 } };
 #endif

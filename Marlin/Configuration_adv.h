@@ -195,11 +195,11 @@
   #endif
 
   /**
-   * Whenever an M104, M109, or M303 increases the target temperature, the
+   * Wheneveran M104, M109, or M303 increases the target temperature, the
    * firmware will wait for the WATCH_TEMP_PERIOD to expire. If the temperature
    * hasn't increased by WATCH_TEMP_INCREASE degrees, the machine is halted and
    * requires a hard reset. This test restarts with any M104/M109/M303, but only
-   * if the current temperature is far enough below the target for a reliable
+   * if the current temperature is far enough below the target  for a reliable
    * test.
    *
    * If you get false positives for "Heating failed", increase WATCH_TEMP_PERIOD
@@ -214,8 +214,8 @@
  * Thermal Protection parameters for the bed are just as above for hotends.
  */
 #if ENABLED(THERMAL_PROTECTION_BED)
-  #define THERMAL_PROTECTION_BED_PERIOD        20 // Seconds
-  #define THERMAL_PROTECTION_BED_HYSTERESIS     2 // Degrees Celsius
+  #define THERMAL_PROTECTION_BED_PERIOD        30 // Seconds
+  #define THERMAL_PROTECTION_BED_HYSTERESIS     4 // Degrees Celsius
 
   /**
    * As described above, except for the bed (M140/M190/M303).
@@ -325,7 +325,7 @@
 
 // Show Temperature ADC value
 // Enable for M105 to include ADC values read from temperature sensors.
-//#define SHOW_TEMP_ADC_VALUES
+// #define SHOW_TEMP_ADC_VALUES
 
 /**
  * High Temperature Thermistor Support
@@ -395,25 +395,25 @@
  * The fan turns on automatically whenever any driver is enabled and turns
  * off (or reduces to idle speed) shortly after drivers are turned off.
  */
-//#define USE_CONTROLLER_FAN
+#define USE_CONTROLLER_FAN
 #if ENABLED(USE_CONTROLLER_FAN)
-  //#define CONTROLLER_FAN_PIN -1        // Set a custom pin for the controller fan
+  #define CONTROLLER_FAN_PIN  5        // Set a custom pin for the controller fan
   //#define CONTROLLER_FAN_USE_Z_ONLY    // With this option only the Z axis is considered
   //#define CONTROLLER_FAN_IGNORE_Z      // Ignore Z stepper. Useful when stepper timeout is disabled.
   #define CONTROLLERFAN_SPEED_MIN      0 // (0-255) Minimum speed. (If set below this value the fan is turned off.)
-  #define CONTROLLERFAN_SPEED_ACTIVE 255 // (0-255) Active speed, used when any motor is enabled
-  #define CONTROLLERFAN_SPEED_IDLE     0 // (0-255) Idle speed, used when motors are disabled
+  #define CONTROLLERFAN_SPEED_ACTIVE 160 // (0-255) Active speed, used when any motor is enabled
+  #define CONTROLLERFAN_SPEED_IDLE    0 // (0-255) Idle speed, used when motors are disabled
   #define CONTROLLERFAN_IDLE_TIME     60 // (seconds) Extra time to keep the fan running after disabling motors
-  //#define CONTROLLER_FAN_EDITABLE      // Enable M710 configurable settings
+  // #define CONTROLLER_FAN_EDITABLE      // Enable M710 configurable settings
   #if ENABLED(CONTROLLER_FAN_EDITABLE)
-    #define CONTROLLER_FAN_MENU          // Enable the Controller Fan submenu
+    // #define CONTROLLER_FAN_MENU          // Enable the Controller Fan submenu
   #endif
 #endif
 
 // When first starting the main fan, run it at full speed for the
 // given number of milliseconds.  This gets the fan spinning reliably
 // before setting a PWM value. (Does not work with software PWM for fan on Sanguinololu)
-//#define FAN_KICKSTART_TIME 100
+// #define FAN_KICKSTART_TIME 500
 
 // Some coolers may require a non-zero "off" state.
 //#define FAN_OFF_PWM  1
@@ -430,8 +430,8 @@
  *
  * Define one or both of these to override the default 0-255 range.
  */
-//#define FAN_MIN_PWM 50
-//#define FAN_MAX_PWM 128
+// #define FAN_MIN_PWM 50
+// #define FAN_MAX_PWM 128
 
 /**
  * FAST PWM FAN Settings
@@ -474,7 +474,7 @@
  * Multiple extruders can be assigned to the same pin in which case
  * the fan will turn on when any selected extruder is above the threshold.
  */
-#define E0_AUTO_FAN_PIN -1
+#define E0_AUTO_FAN_PIN 4
 #define E1_AUTO_FAN_PIN -1
 #define E2_AUTO_FAN_PIN -1
 #define E3_AUTO_FAN_PIN -1
@@ -690,7 +690,7 @@
 
   // Feature: Switch into SW mode after a deploy. It makes the output pulse longer. Can be useful
   //          in special cases, like noisy or filtered input configurations.
-  //#define BLTOUCH_FORCE_SW_MODE
+  // #define BLTOUCH_FORCE_SW_MODE
 
   /**
    * Settings for BLTouch Smart 3.0 and 3.1
@@ -708,7 +708,7 @@
    * differs, a mode set eeprom write will be completed at initialization.
    * Use the option below to force an eeprom write to a V3.1 probe regardless.
    */
-  //#define BLTOUCH_SET_5V_MODE
+  // #define BLTOUCH_SET_5V_MODE
 
   /**
    * Safety: Activate if connecting a probe with an unknown voltage mode.
@@ -854,7 +854,7 @@
 #define DEFAULT_MINTRAVELFEEDRATE     0.0     // (mm/s) Minimum travel feedrate. Set with M205 T.
 
 // Minimum time that a segment needs to take as the buffer gets emptied
-#define DEFAULT_MINSEGMENTTIME        20000   // (µs) Set with M205 B.
+#define DEFAULT_MINSEGMENTTIME        50000   // (µs) Set with M205 B.
 
 // Slow down the machine if the lookahead buffer is (by default) half full.
 // Increase the slowdown divisor for larger buffer sizes.
@@ -1053,7 +1053,7 @@
   #define SHORT_MANUAL_Z_MOVE 0.025 // (mm) Smallest manual Z move (< 0.1mm)
   #if ENABLED(ULTIPANEL)
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
-    #define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
+    // #define ULTIPANEL_FEEDMULTIPLY  // Encoder sets the feedrate multiplier on the Status Screen
   #endif
 #endif
 
@@ -1125,10 +1125,10 @@
 //#define LCD_DECIMAL_SMALL_XY
 
 // The timeout (in ms) to return to the status screen from sub-menus
-//#define LCD_TIMEOUT_TO_STATUS 15000
+#define LCD_TIMEOUT_TO_STATUS 15000
 
 // Add an 'M73' G-code to set the current percentage
-//#define LCD_SET_PROGRESS_MANUALLY
+#define LCD_SET_PROGRESS_MANUALLY
 
 // Show the E position (filament used) during printing
 //#define LCD_SHOW_E_TOTAL
@@ -1138,10 +1138,10 @@
 #endif
 
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY) && ANY(HAS_MARLINUI_U8GLIB, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-  //#define SHOW_REMAINING_TIME       // Display estimated time to completion
+  // #define SHOW_REMAINING_TIME       // Display estimated time to completion
   #if ENABLED(SHOW_REMAINING_TIME)
     //#define USE_M73_REMAINING_TIME  // Use remaining time from M73 command instead of estimation
-    //#define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
+    // #define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
   #endif
 
   #if HAS_MARLINUI_U8GLIB
@@ -1603,7 +1603,7 @@
  *
  * Warning: Does not respect endstops!
  */
-//#define BABYSTEPPING
+#define BABYSTEPPING
 #if ENABLED(BABYSTEPPING)
   //#define INTEGRATED_BABYSTEPPING         // EXPERIMENTAL integration of babystepping into the Stepper ISR
   //#define BABYSTEP_WITHOUT_HOMING
@@ -1628,6 +1628,7 @@
 
   //#define BABYSTEP_ZPROBE_OFFSET          // Combine M851 Z and Babystepping
   #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
+
     //#define BABYSTEP_HOTEND_Z_OFFSET      // For multiple hotends, babystep relative Z offsets
     //#define BABYSTEP_ZPROBE_GFX_OVERLAY   // Enable graphical overlay on Z-offset editor
   #endif
@@ -1701,10 +1702,10 @@
 
 #if EITHER(MESH_BED_LEVELING, AUTO_BED_LEVELING_UBL)
   // Override the mesh area if the automatic (max) area is too large
-  //#define MESH_MIN_X MESH_INSET
-  //#define MESH_MIN_Y MESH_INSET
-  //#define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
-  //#define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
+  // #define MESH_MIN_X MESH_INSET
+  // #define MESH_MIN_Y MESH_INSET
+  // #define MESH_MAX_X X_BED_SIZE - (MESH_INSET)
+  // #define MESH_MAX_Y Y_BED_SIZE - (MESH_INSET)
 #endif
 
 /**
@@ -1891,9 +1892,9 @@
 #if BOTH(SDSUPPORT, DIRECT_STEPPING)
   #define BLOCK_BUFFER_SIZE  8
 #elif ENABLED(SDSUPPORT)
-  #define BLOCK_BUFFER_SIZE 16
+  #define BLOCK_BUFFER_SIZE 32
 #else
-  #define BLOCK_BUFFER_SIZE 16
+  #define BLOCK_BUFFER_SIZE 32
 #endif
 
 // @section serial
@@ -1915,7 +1916,7 @@
 // Without XON/XOFF flow control (see SERIAL_XON_XOFF below) 32 bytes should be enough.
 // To use flow control, set this buffer size to at least 1024 bytes.
 // :[0, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-//#define RX_BUFFER_SIZE 1024
+#define RX_BUFFER_SIZE 2048
 
 #if RX_BUFFER_SIZE >= 1024
   // Enable to have the controller send XON/XOFF control characters to
@@ -3578,12 +3579,12 @@
 //
 // M42 - Set pin states
 //
-//#define DIRECT_PIN_CONTROL
+// #define DIRECT_PIN_CONTROL
 
 //
 // M43 - display pin status, toggle pins, watch pins, watch endstops & toggle LED, test servo probe
 //
-//#define PINS_DEBUGGING
+// #define PINS_DEBUGGING
 
 // Enable Marlin dev mode which adds some special commands
 //#define MARLIN_DEV_MODE

@@ -36,6 +36,10 @@
 #endif
 #define BOARD_INFO_NAME "Azteeg X3"
 
+#define FAN_PIN 11
+// #define BEEPER_PIN 33
+// #define BEEPER_TYPE 1
+
 //
 // Servos
 //
@@ -54,9 +58,13 @@
 
   #undef DOGLCD_A0
   #undef DOGLCD_CS
+  #undef BTN_EN1
+  #undef BTN_EN2
   #undef BTN_ENC
   #define DOGLCD_A0                           31
   #define DOGLCD_CS                           32
+  #define BTN_EN1                             39
+  #define BTN_EN2                             47
   #define BTN_ENC                             12
 
   #define STAT_LED_RED_PIN                    64
@@ -72,7 +80,7 @@
 //
 // Misc
 //
-#if ENABLED(CASE_LIGHT_ENABLE) && PIN_EXISTS(CASE_LIGHT, STAT_LED_RED) && STAT_LED_RED_PIN == CASE_LIGHT_PIN
+#if ENABLED(CASE_LIGHT_ENABLE) && (PIN_EXISTS(CASE_LIGHT) || PIN_EXISTS(STAT_LED_RED)) && STAT_LED_RED_PIN == CASE_LIGHT_PIN
   #undef STAT_LED_RED_PIN
 #endif
 

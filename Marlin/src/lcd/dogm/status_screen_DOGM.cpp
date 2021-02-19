@@ -164,7 +164,7 @@
   }
 #endif
 
-#define PROGRESS_BAR_X 54
+#define PROGRESS_BAR_X 0
 #define PROGRESS_BAR_Y (EXTRAS_BASELINE + 1)
 #define PROGRESS_BAR_WIDTH (LCD_PIXEL_WIDTH - PROGRESS_BAR_X)
 
@@ -801,12 +801,12 @@ void MarlinUI::draw_status_screen() {
   #define EXTRAS_2_BASELINE (EXTRAS_BASELINE + 3)
 
   if (PAGE_CONTAINS(EXTRAS_2_BASELINE - INFO_FONT_ASCENT, EXTRAS_2_BASELINE - 1)) {
-    set_font(FONT_MENU);
-    lcd_put_wchar(3, EXTRAS_2_BASELINE, LCD_STR_FEEDRATE[0]);
+    // set_font(FONT_MENU);
+    // lcd_put_wchar(3, EXTRAS_2_BASELINE, LCD_STR_FEEDRATE[0]);
 
-    set_font(FONT_STATUSMENU);
-    lcd_put_u8str(12, EXTRAS_2_BASELINE, i16tostr3rj(feedrate_percentage));
-    lcd_put_wchar('%');
+    // set_font(FONT_STATUSMENU);
+    // lcd_put_u8str(12, EXTRAS_2_BASELINE, i16tostr3rj(feedrate_percentage));
+    // lcd_put_wchar('%');
 
     //
     // Filament sensor display if SD is disabled
